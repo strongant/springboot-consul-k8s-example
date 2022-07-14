@@ -6,5 +6,5 @@ spring:
       discovery:
         enabled: true
         instance-id: ${spring.application.name}:${random.value}
-      host: consul-ui
-      port: 80
+      host: ${DISCOVERY_SERVICE_HOST:localhost}
+      port: ${DISCOVERY_SERVICE_PORT:8500}
