@@ -7,5 +7,6 @@ spring:
         enabled: true
         instance-id: ${spring.application.name}:${random.value}
         prefer-ip-address: true
+        tags: version=1
       host: ${DISCOVERY_SERVICE_HOST:localhost}
       port: ${DISCOVERY_SERVICE_PORT:8500}
