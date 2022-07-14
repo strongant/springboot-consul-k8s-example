@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "myk8s-ef46"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "myk8s-ef46"
+  template:
+    metadata:
+      labels:
+        app: "myk8s-ef46"
+    spec:
+      containers:
+        - name: "myk8s-ef46"
+          image: "testregistrystrongant1994.azurecr.io/myk8s"
+          ports:
+          - containerPort: 80
