@@ -8,19 +8,3 @@ spring:
         instance-id: ${spring.application.name}:${random.value}
       host: ${DISCOVERY_SERVICE_HOST:localhost}
       port: ${DISCOVERY_SERVICE_PORT:8500}
-  datasource:
-    username: ${DATABASE_USER:postgres}
-    password: ${DATABASE_PASSWORD:postgres}
-    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME}
-  jpa:
-    database: postgresql
-    generate-ddl: false
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-  flyway:
-    baseline-on-migrate: true
-    enabled: false
-    clean-on-validation-error: true
-    encoding: UTF-8
-    check-location: true
