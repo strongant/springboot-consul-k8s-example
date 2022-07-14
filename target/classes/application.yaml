@@ -6,5 +6,5 @@ spring:
       discovery:
         enabled: true
         instance-id: ${spring.application.name}:${random.value}
-      host: ${DISCOVERY_SERVICE_HOST:localhost}
+      host: ${HOST_IP:localhost}
       port: ${DISCOVERY_SERVICE_PORT:8500}
