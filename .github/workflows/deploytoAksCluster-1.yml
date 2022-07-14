@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: testregistrystrongant1994.azurecr.io
+        username: ${{ secrets.acr_testregistrystrongant1994_username }}
+        password: ${{ secrets.acr_testregistrystrongant1994_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t testregistrystrongant1994.azurecr.io/myk8s:${{ github.sha }} --label dockerfile-path=Dockerfile
+        docker push testregistrystrongant1994.azurecr.io/myk8s:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_myk8s_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep my-k8sa2a3 | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace my-k8sa2a3`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: my-k8sa2a3
+        container-registry-url: testregistrystrongant1994.azurecr.io
+        container-registry-username: ${{ secrets.acr_testregistrystrongant1994_username }}
+        container-registry-password: ${{ secrets.acr_testregistrystrongant1994_password }}
+        secret-name: myk8sdockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: my-k8sa2a3
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+        images: |
+          testregistrystrongant1994.azurecr.io/myk8s:${{ github.sha }}
+        imagepullsecrets: |
+          myk8sdockerauth
