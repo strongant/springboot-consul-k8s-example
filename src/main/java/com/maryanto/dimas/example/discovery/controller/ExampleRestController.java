@@ -13,7 +13,7 @@ import java.util.Map;
 @RequestMapping("/api")
 public class ExampleRestController {
 
-    @Value("${server.port}")
+    @Value("${server.port:9100}")
     private int serverPort;
 
     @GetMapping("/halo")
