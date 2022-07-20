@@ -1,4 +1,4 @@
-package com.maryanto.dimas.example.server.discovery.feign;
+package com.maryanto.dimas.example.server.discovery.server.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

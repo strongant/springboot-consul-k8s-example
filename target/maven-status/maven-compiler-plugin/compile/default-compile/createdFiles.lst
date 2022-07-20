@@ -1,0 +1,3 @@
+com/maryanto/dimas/example/server/discovery/server/DiscoveryServiceExample.class
+com/maryanto/dimas/example/server/discovery/server/feign/ExampleFeign.class
+com/maryanto/dimas/example/server/discovery/server/controller/ExampleRestController.class

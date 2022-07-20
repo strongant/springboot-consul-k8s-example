@@ -1,4 +1,4 @@
-package com.maryanto.dimas.example.server.discovery.controller;
+package com.maryanto.dimas.example.server.discovery.server.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;

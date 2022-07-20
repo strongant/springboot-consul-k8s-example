@@ -1,4 +1,4 @@
-package com.maryanto.dimas.example.server.discovery;
+package com.maryanto.dimas.example.server.discovery.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
