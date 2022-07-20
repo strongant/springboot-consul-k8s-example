@@ -24,7 +24,7 @@ public class ExampleRestController {
         return params;
     }
 
-    @GetMapping("/call")
+    @GetMapping("/serve/call")
     public String call() {
         return "server:" + serverPort;
     }
